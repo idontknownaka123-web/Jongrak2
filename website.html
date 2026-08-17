@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Use yellow tone for hero/header and nav to match brand */
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #ffeb99 0%, #ffd24d 100%);
+  color: #4b2f00;
+}
+
+/* Top navigation bar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #d4af37;
+}
+
+/* Navigation bar links */
+.navbar a {
+  color: #2f2310;
+  padding: 12px 18px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #c4a72a;
+  color: #fff;
+  border-radius: 6px;
+}
+
+/* Column container */
+.container {  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+/* Sidebar/left column */
+.side {
+  flex: 1 1 280px;
+  background-color: #fff9e6;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+/* Main column */
+.main {
+  flex: 2 1 640px;
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #ddd;
+  width: 100%;
+  padding: 16px;
+}
+
+/* Image grid (keeps added gallery) */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.image-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: default;
+}
+
+.image-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.image-card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+  -webkit-user-drag: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-card:hover img {
+  transform: scale(1.05);
+}
+
+.image-card p {
+  margin:10px 12px 14px;
+  font-weight:700;
+  color:#4b2f00;
+}
+
+.gallery-section {
+  max-width: 1100px;
+  margin: 32px auto 0;
+  padding: 0 18px 30px;
+}
+
+.gallery-section h2 {
+  margin: 0 0 14px;
+  color: #4b2f00;
+  font-size: 1.25rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.gallery-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.gallery-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-card .caption {
+  padding: 10px 12px 14px;
+  font-weight: 700;
+  color: #4b2f00;
+  font-size: 0.95rem;
+}
+
+/* Feature badges in sidebar: make the three spans prominent */
+.feature-card { margin: 12px 0; font-size: 1rem; color: #4b2f00; display: flex; align-items: center; gap: 10px; }
+.feature-card span {
+  background: linear-gradient(180deg, #fff8d6 0%, #fff1b3 100%);
+  color: #5a3710;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: 0 6px 14px rgba(92,53,0,0.08);
+  border: 1px solid rgba(140,94,0,0.12);
+  display: inline-block;
+  min-width: 72px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #fff1c9;
+  color: #4b2f00;
+}
+
+/* Header Banner styling to prevent it from stretching too large */
+.banner-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 18px 0;
+  text-align: center;
+}
+
+.banner-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsive layout - stack columns on small screens */
+@media screen and (max-width: 700px) {
+  .container, .navbar {   
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- Header -->
+<header class="banner-container">
+  <img src="pattani-tourism-banner.png" alt="Pattani Tourism Banner">
+</header>
+
+<header class="hero">
+  <div class="hero-content">
+    <h1>ปลดปล่อยคำว่าเที่ยวครั้งนี้ให้เป็นประสบการณ์ที่อ่านแล้วต้องไป</h1>
+    <p>เราได้รวบรวมสถานที่ท่องเที่ยว ที่พัก และอาหารเด็ดในปัตตานีไว้ให้คุณแล้ว เพียงแค่คลิกเดียวก็สามารถเข้าถึงข้อมูลทั้งหมดได้ทันที</p>
+    <div class="hero-buttons">
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+  <a class="active" href="website.html">หน้าแรก</a>
+  <a href="travel.html">สถานที่ท่องเที่ยว</a>
+  <a href="teepark.html">แนะนำที่พัก</a>
+  <a href="food.html">อาหาร</a>
+  <a href="contact.html">ติดต่อเรา</a>
+</div>
+
+<!-- Content Container -->
+<div class="container">
+  <div class="side">
+    <h2>เมนูแนะนำ</h2>
+    <p>เราเข้าใจว่าทริปที่ดีต้องทั้งสวย ทั้งสะดวก จึงเลือกคำแนะนำที่ช่วยคุณรู้สึกอยากจองในทันที</p>
+    <div class="feature-card"><span>ไปง่าย</span> คัดสถานที่ที่เข้าถึงง่ายในปัตตานี</div>
+    <div class="feature-card"><span>สวยงาม</span> สัมผัสบรรยากาศท้องถิ่นแบบอบอุ่น</div>
+    <div class="feature-card"><span>ไม่หลงทาง</span> แนะนำเส้นทางที่ชัดเจนและอ่านสบายตา</div>
+  </div>
+  <div class="main">
+    
+    <div class="card">
+      <h3>เมื่อพร้อมแล้ว ปลายทางอยู่ใกล้กว่าที่คิด</h3>
+      <p>แค่คลิกเดียวก็เข้าสู่โลกของสถานที่ท่องเที่ยว ที่พัก และอาหารเด็ด </p>
+    </div>
+
+    <div class="card">
+      <h3>รูปภาพตัวอย่าง</h3>
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="download.jpg" alt="สถานที่ท่องเที่ยวปัตตานี">
+          <p>สถานที่ท่องเที่ยวสวยๆ ใกล้ตัวเมือง</p>
+        </div>
+        <div class="image-card">
+          <img src="images (1).jpg" alt="ที่พักอบอุ่น">
+          <p>ที่พักอบอุ่นสไตล์บ้านสวน</p>
+        </div>
+        <div class="image-card">
+          <img src="1.jpg" alt="อาหารท้องถิ่น">
+          <p>อาหารท้องถิ่นรสชาติเข้มข้น</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="gallery-section">
+  <h2>คลังภาพประทับใจ</h2>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <img src="images (3).jpg" alt="ท้องถนนเมืองเก่า">
+      <div class="caption">ท้องถนนเมืองเก่า</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images (5).jpg" alt="ชานเตาถ่านร้อน ๆ">
+      <div class="caption">ชานเตาถ่านร้อน ๆ</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images (4).jpg" alt="แสงทองยามค่ำคืน">
+      <div class="caption">แสงทองยามค่ำคืน</div>
+    </div>
+  </div>
+</section>
+
+<div style="max-width: 1100px; margin: 0 auto 24px; padding: 0 18px;">
+  <div style="background: linear-gradient(90deg, #fff3b0 0%, #ffd24d 100%); border: 1px solid #e4b52a; border-radius: 12px; padding: 20px 24px; text-align: center; color: #4b2f00; box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+    <h3 style="margin: 0 0 8px; font-size: 1.2rem;">คุณไม่เคยมาหรอ ลองมาสิ แล้วคุณจะประทับใจ</h3>
+    <p style="margin: 0; font-size: 1rem;">มาสัมผัสบรรยากาศ อาหาร และสถานที่สวยงามของปัตตานีแบบใกล้ชิดกันเลย</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <h2>ที่อยู่: ศูนย์บริการข้อมูลท่องเที่ยวจังหวัดปัตตานี ถนนเดชา ตำบลสะบารัง อำเภอเมืองปัตตานี จังหวัดปัตตานี 94000<br>เบอร์โทรศัพท์: 073-XXX-XXX | อีเมล: contact@pattanitourism.go.th</h2>
+</footer>
+
+</body>
+</html>
+
+

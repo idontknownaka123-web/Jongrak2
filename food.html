@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แนะนำอาหารเด็ดในปัตตานี</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #fffbea;
+      color: #3e2723;
+      line-height: 1.6;
+    }
+
+    /* ส่วนหัวข้อเว็บ */
+    .header {
+      background: linear-gradient(90deg, #fdd835 0%, #c5a028 100%);
+      padding: 30px 20px;
+      text-align: center;
+      color: #3e2723;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+    }
+
+    .header p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    /* เมนูหลัก */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #c5a028;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #3e2723;
+      text-decoration: none;
+      padding: 12px 16px;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      background-color: #a67d10;
+      color: white;
+      border-radius: 6px;
+    }
+
+    .navbar .active {
+      background-color: #8f6a0c;
+      color: white;
+      border-radius: 6px;
+    }
+
+    /* คอนเทนเนอร์หลัก */
+    .container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 18px 24px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* แถบเมนูด้านซ้าย */
+    .sidebar {
+      flex: 1 1 240px;
+      background-color: #fff9e6;
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #f0d98b;
+    }
+
+    .sidebar h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .sidebar p {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .sidebar .tag {
+      display: inline-block;
+      background: linear-gradient(180deg, #fff3b0 0%, #fdd835 100%);
+      color: #5c3b00;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin: 6px 6px 6px 0;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    /* ส่วนการ์ดอาหาร */
+    .content {
+      flex: 2 1 600px;
+    }
+
+    .content h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+
+    .food-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .food-card {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      width: calc(50% - 8px);
+      min-width: 240px;
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .food-info {
+      padding: 12px 14px 14px;
+    }
+
+    .food-title {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .food-info .labels {
+      margin-bottom: 8px;
+    }
+
+    .food-info .labels span {
+      display: inline-block;
+      background-color: #fff9e6;
+      color: #8a5a00;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    .food-info p {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      color: #5f4337;
+    }
+
+    .btn-more {
+      display: inline-block;
+      background-color: #d6b64a;
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .btn-more:hover {
+      background-color: #a67d10;
+    }
+
+    /* แถบเน้นด้านล่าง */
+    .banner {
+      max-width: 1100px;
+      margin: 0 auto 24px;
+      padding: 0 18px;
+    }
+
+    .banner-box {
+      background: linear-gradient(90deg, #fff3b0 0%, #ffd24d 100%);
+      border: 1px solid #e4b52a;
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: center;
+      color: #4b2f00;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    footer {
+      background-color: #fff1c9;
+      padding: 20px;
+      text-align: center;
+      color: #4b2f00;
+    }
+
+    /* สำหรับหน้าจอเล็ก */
+    @media screen and (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .food-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ส่วนหัวเว็บ -->
+  <header class="header">
+    <h1>แนะนำอาหารเด็ดในปัตตานี</h1>
+    <p>ลองชิมเมนูท้องถิ่นที่มีรสชาติแปลกใหม่และอร่อยมากในจังหวัดปัตตานี</p>
+  </header>
+
+  <!-- เมนูหลักของเว็บไซต์ -->
+  <nav class="navbar">
+    <a href="website.html">หน้าแรก</a>
+    <a href="travel.html">สถานที่ท่องเที่ยว</a>
+    <a href="teepark.html">แนะนำที่พัก</a>
+    <a class="active" href="food.html">อาหาร</a>
+    <a href="contact.html">ติดต่อเรา</a>
+  </nav>
+
+  <!-- คอนเทนเนอร์หลัก -->
+  <main class="container">
+    <!-- เมนูด้านซ้าย -->
+    <aside class="sidebar">
+      <h2>อาหารที่ควรลองในปัตตานี</h2>
+      <p>ปัตตานีมีอาหารท้องถิ่นที่อร่อยและมีเอกลักษณ์มากมาย เหมาะสำหรับคนที่ชอบลิ้มลองของกินใหม่</p>
+      <div class="tag">อาหารคาว</div>
+      <div class="tag">ขนมหวาน</div>
+      <div class="tag">เครื่องดื่ม</div>
+      <div class="tag">สูตรพื้นเมือง</div>
+    </aside>
+
+    <!-- ส่วนแสดงเมนูอาหาร -->
+    <section class="content">
+      <h2>เมนูอาหารแนะนำ</h2>
+      <div class="food-grid">
+
+        <article class="food-card">
+          <img src="v.jpg" alt="ปลาหมึกต้มหวาน">
+          <div class="food-info">
+            <h3 class="food-title">ปลาหมึกต้มหวาน</h3>
+            <div class="labels">
+              <span>อาหารคาว</span>
+              <span>ท้องถิ่น</span>
+            </div>
+            <p>รสชาติเค็มหวานพอดีและน่ารับประทานมาก เหมาะกับคนที่ชอบอาหารทะเล</p>
+            <a class="btn-more" href="#">ดูร้านแนะนำ</a>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img src="p.jpg" alt="นาซิดาแฆ">
+          <div class="food-info">
+            <h3 class="food-title">นาซิดาแฆ</h3>
+            <div class="labels">
+              <span>อาหารคาว</span>
+              <span>แปลกใหม่</span>
+            </div>
+            <p>เป็นอาหารที่มีความโดดเด่นด้วยความหอมของเครื่องเทศและความนุ่มของเนื้อสัตว์</p>
+            <a class="btn-more" href="#">ดูร้านแนะนำ</a>
+          </div>
+        </article>
+
+ 
+        <article class="food-card">
+          <img src="r.jpg" alt="ละแซ">
+          <div class="food-info">
+            <h3 class="food-title">ละแซ</h3>
+            <div class="labels">
+              <span>ขนมหวาน</span>
+              <span>พื้นบ้าน</span>
+            </div>
+            <p>ของหวานที่ทำจากแป้งและน้ำตาลหวานหอม ให้ความรู้สึกนุ่มนวลและอร่อย</p>
+            <a class="btn-more" href="#">ดูร้านแนะนำ</a>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img src="d.jpg" alt="ไก่กอและ">
+          <div class="food-info">
+            <h3 class="food-title">ไก่กอและ</h3>
+            <div class="labels">
+              <span>อาหารคาว</span>
+              <span>อร่อยจัด</span>
+            </div>
+            <p>เมนูที่มีกลิ่นหอมของเครื่องเทศและเนื้อไก่ชุ่มชื้น ทำให้กินแล้วติดใจ</p>
+            <a class="btn-more" href="#">ดูร้านแนะนำ</a>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img src="vv.jpg" alt="ก๋วยเตี๋ยวแกง">
+          <div class="food-info">
+            <h3 class="food-title">ก๋วยเตี๋ยวแกง</h3>
+            <div class="labels">
+              <span>อาหารคาว</span>
+              <span>จานเด่น</span>
+            </div>
+            <p>แกงกลมกล่อมรสเผ็ดนิด ๆ หอมเครื่องเทศมาก เหมาะกับการรับประทานตอนเย็น</p>
+            <a class="btn-more" href="#">ดูร้านแนะนำ</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- แถบเน้นด้านล่าง -->
+  <section class="banner">
+    <div class="banner-box">
+      <h3>ลองเลือกเมนูที่ชอบ แล้วไปชิมกันที่ปัตตานี</h3>
+      <p>อาหารท้องถิ่นในจังหวัดปัตตานีอร่อยและมีเสน่ห์มากๆ เลือกสิ่งที่อยากลองได้เลย</p>
+    </div>
+  </section>
+
+  <!-- ส่วนท้าย -->
+  <footer>
+    <h2>ที่อยู่: ศูนย์ข้อมูลท่องเที่ยวจังหวัดปัตตานี</h2>
+    <p>เบอร์โทร: 073-XXX-XXX | อีเมล: contact@pattanitourism.go.th</p>
+  </footer>
+
+</body>
+</html>
+
